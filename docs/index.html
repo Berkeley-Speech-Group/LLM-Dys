@@ -1,39 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>LLM-Dys Audio Demo</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #ff6b6b;
+            --accent-color: #4ecdc4;
+            --light-bg: #f9f9f9;
+            --dark-text: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            max-width: 1400px;  /* Increased from 1200px */
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            display: flex;
-            gap: 40px;  /* Increased from 20px */
-            justify-content: space-between;
-        }
-        .audio-container {
-            flex: 1;
-            margin: 20px 0;
-            padding: 20px;  /* Increased from 15px */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .text-info {
-            margin-top: 10px;
+            padding: 30px;
+            font-family: 'Open Sans', Arial, sans-serif;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
             line-height: 1.6;
         }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .audio-container {
+            flex: 1;
+            min-width: 300px;
+            margin: 10px 0;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .audio-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        audio {
+            width: 100%;
+            margin: 15px 0;
+            border-radius: 30px;
+        }
+        
+        .text-info {
+            margin-top: 15px;
+            line-height: 1.7;
+            background-color: rgba(245, 245, 245, 0.7);
+            padding: 15px;
+            border-radius: var(--border-radius);
+        }
+        
+        .text-info p {
+            margin-bottom: 8px;
+        }
+        
         .highlight {
-            color: red;
+            color: var(--secondary-color);
             font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        .dysfluency-type {
+            display: inline-block;
+            padding: 3px 8px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .audio-container {
+                min-width: 100%;
+            }
+            
+            body {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>LLM-Dys audio examples</h1>
+    <header>
+        <h1>LLM-Dys Corpus Examples</h1>
+    </header>
+
     <div class="container">
         <div class="audio-container">
             <h2>Word-level Repetition</h2>
