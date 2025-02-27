@@ -82,8 +82,8 @@
             </audio>
             <div class="text-info">
                 <p><strong>Clean text:</strong> Mom, can you help me with my science project?</p>
-                <p><strong>Dysfluent text:</strong> mˈɑːm, kæn juː hˈɛlp mˌiː wɪð maɪ sˈaɪtəns pɹˈɑːdʒɛkt?</p>
-                <p><strong>Model output/label:</strong> M AA M K AE N Y UW HH EH L P M IY W IH DH M AY S AY [INS] AH N S P R AA JH EH K T</p>
+                <p><strong>Dysfluent text:</strong> mˈɑːm, kæn juː hˈɛlp mˌiː wɪð maɪ sˈaɪ<span class="highlight">t</span>əns pɹˈɑːdʒɛkt?</p>
+                <p><strong>Model output/label:</strong> M AA M K AE N Y UW HH EH L P M IY W IH DH M AY S AY <span class="highlight">[INS]</span> AH N S P R AA JH EH K T</p>
             </div>
         </div>
     </div>
@@ -121,9 +121,9 @@
                 Your browser does not support the audio element.
             </audio>
             <div class="text-info">
-                <p><strong>Clean text:</strong> The patient needs immediate medical attention.</p>
-                <p><strong>Dysfluent text:</strong> The patient needs immediate medical retention.</p>
-                <p><strong>Model output/label:</strong> The patient needs immediate medical attention [SUB].</p>
+                <p><strong>Clean text:</strong> The patient needs immediate medical <span class="highlight">attention</span>.</p>
+                <p><strong>Dysfluent text:</strong> The patient needs immediate medical <span class="highlight">retention</span>.</p>
+                <p><strong>Model output/label:</strong> The patient needs immediate medical<span class="highlight"> attention [SUB]</span>.</p>
             </div>
         </div>
         <div class="audio-container">
@@ -134,9 +134,9 @@
             </audio>
             <div class="text-info">
                 <p><strong>Clean text:</strong> The moon shines brightly in the night sky.</p>
-                <p><strong>Clean IPA:</strong> ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈaɪ.</p>
-                <p><strong>Dysfluent text:</strong>ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈeɪ.</p>
-                <p><strong>Model output/label:</strong> DH AH M UW N SH AY N Z B R AY T L IY IH N DH AH N AY T S K AY [SUB]</p>
+                <p><strong>Clean IPA:</strong> ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈ<span class="highlight">aɪ</span>.</p>
+                <p><strong>Dysfluent text:</strong>ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈ<span class="highlight">eɪ</span>.</p>
+                <p><strong>Model output/label:</strong> DH AH M UW N SH AY N Z B R AY T L IY IH N DH AH N AY T S K <span class="highlight">AY [SUB]</span></p>
             </div>
         </div>
     </div>
@@ -149,8 +149,8 @@
             </audio>
             <div class="text-info">
                 <p><strong>Clean text:</strong>The client wants us to deliver the product by next month.</p>
-                <p><strong>Dysfluent text:</strong> The client wants us deliver the product by next month.</p>
-                <p><strong>Model output/label:</strong> The client wants us to [DEL] deliver the product by next month.</p>
+                <p><strong>Dysfluent text:</strong> The client wants<span class="highlight"> us deliver </span>the product by next month.</p>
+                <p><strong>Model output/label:</strong> The client wants us <span class="highlight">to [DEL] </span>deliver the product by next month.</p>
             </div>
         </div>
         <div class="audio-container">
@@ -161,9 +161,9 @@
             </audio>
             <div class="text-info">
                 <p><strong>Clean text:</strong> The photographer captured stunning landscapes.</p>
-                <p><strong>Clean IPA:</strong> ðə fətˈɑːɡɹəfɚ kˈæptʃɚd stˈʌnɪŋ lˈændskeɪps.</p>
+                <p><strong>Clean IPA:</strong> ðə fətˈɑːɡɹəfɚ kˈæ<span class="highlight">ptʃɚ</span>d stˈʌnɪŋ lˈændskeɪps.</p>
                 <p><strong>Dysfluent text(IPA):</strong>ðə fətˈɑːɡɹəfɚ kˈæ<span class="highlight">pɚ</span>d stˈʌnɪŋ lˈændskeɪps.</p>
-                <p><strong>Model output/label:</strong> DH AH F AH T AA G R AH F ER K AE P CH [DEL] ER D S T AH N IH NG L AE N D S K EY P S</p>
+                <p><strong>Model output/label:</strong> DH AH F AH T AA G R AH F ER K AE P<span class="highlight"> CH [DEL] </span> ER D S T AH N IH NG L AE N D S K EY P S</p>
             </div>
         </div>
     </div>
