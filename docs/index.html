@@ -234,34 +234,23 @@
             }
             
             /* Alternative solution if :has selector isn't supported in all browsers */
-            .container.full-width {
-                display: block;
+            .flip-card.vertical-flip .flip-card-inner {
+                transform-style: preserve-3d;
+                transition: transform 0.8s;
+                transform-origin: center center;
             }
             
-            .container.full-width .flip-card {
-                max-width: none;
-                perspective: 2400px; /* Increase perspective for smoother animation */
+            .flip-card.vertical-flip.flipped .flip-card-inner {
+                transform: rotateX(180deg) scale(0.98); /* Vertical flip */
             }
             
-            .container.full-width .flip-card-inner {
-                transform-origin: center; /* Flip from center */
+            .flip-card.vertical-flip .flip-card-back {
+                transform: rotateX(180deg); /* Vertical flip position */
             }
             
-            /* Slow down the flip animation slightly */
-            .container.full-width .flip-card-inner {
-                transition: transform 1s;
-            }
-            
-            /* Add a subtle scale effect to make the flip less dramatic */
-            .container.full-width .flip-card.flipped .flip-card-inner {
-                transform: rotateY(180deg) scale(0.98);
-            }
-            
-            /* Ensure content is centered better */
-            .container.full-width .audio-container {
-                max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
+            /* Optional: make the vertical flip smoother */
+            .flip-card.vertical-flip {
+                perspective: 2000px;
             }
 </style>
 </head>
@@ -351,7 +340,7 @@
                         
                         <div class="back-example">
                             <audio controls>
-                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/5246%20phn_rep.wav" type="audio/wav">
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/more_examples/phn_rep/6461.wav" type="audio/wav">
                                 Your browser does not support the audio element.
                             </audio>
                             <div class="text-info">
@@ -746,7 +735,7 @@
 <!-- Replace Phone-level Prolongation section -->
 <!-- Replace just this container div for Phone-level Prolongation section -->
 <div class="container">
-    <div class="flip-card" style="flex: 0 0 100%; max-width: 1600px; margin-left: auto; margin-right: auto;">
+    <div class="flip-card vertical-flip" style="flex: 0 0 100%; max-width: 1600px; margin-left: auto; margin-right: auto;">
         <div class="flip-card-inner">
             <div class="flip-card-front">
                 <div class="audio-container">
