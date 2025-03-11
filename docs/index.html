@@ -133,14 +133,94 @@
             }
             
             .audio-container {
+                position: relative;
                 min-width: 100%;
             }
             
             body {
                 padding: 15px;
             }
-        }
-    </style>
+            }
+            .flip-card {
+                perspective: 1000px;
+                flex: 1;
+                min-width: 300px;
+                margin: 10px 0;
+            }
+            
+            .flip-card-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.8s;
+                transform-style: preserve-3d;
+            }
+            
+            .flip-card.flipped .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+            
+            .flip-card-front, .flip-card-back {
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                width: 100%;
+                min-height: 100%;
+                border-radius: var(--border-radius);
+            }
+            
+            .flip-card-back {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: rotateY(180deg);
+            }
+            
+                .more-examples-btn {
+                position: absolute;
+                top: 30px;
+                right: 15px;
+                background-color: var(--primary-color);
+                color: white;
+                padding: 6px 12px;
+                border: none;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 0.8rem;
+                transition: background-color 0.3s ease;
+                z-index: 10;
+            }
+            
+            .more-examples-btn:hover {
+                background-color: #3a5a85;
+            }
+            
+            .back-btn {
+                position: absolute;
+                top: 30px;
+                right: 15px;
+                background-color: var(--accent-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+            
+            .back-btn:hover {
+                background-color: #3bb3aa;
+            }
+            
+            .back-example {
+                margin-bottom: 25px;
+            }
+        </style>
 </head>
 <body>
     <header>
@@ -148,151 +228,598 @@
     </header>
 
     <div class="container">
-        <div class="audio-container">
-            <h2>Word-level Repetition</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6990%20word_rep.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> The new policy has been well-received by most employees.</p>
-                <p><strong>Dysfluent text:</strong> The new policy <span class="highlight">has , has</span> been well-received by most employees.</p>
-                <p><strong>Model output/label:</strong> The new policy <span class="highlight">has [REP]</span> been well-received by most employees.</p>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="audio-container">
+                        <h2>Word-level Repetition</h2>
+                        <audio controls>
+                            <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6990%20word_rep.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p><strong>Clean text:</strong> The new policy has been well-received by most employees.</p>
+                            <p><strong>Dysfluent text:</strong> The new policy <span class="highlight">has , has</span> been well-received by most employees.</p>
+                            <p><strong>Model output/label:</strong> The new policy <span class="highlight">has [REP]</span> been well-received by most employees.</p>
+                        </div>
+                        <button class="more-examples-btn">More Examples</button>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="audio-container">
+                        <h2>Word-level Repetition - More Examples</h2>
+                        <button class="back-btn">←</button>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/more_examples/word_rep/141.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>The concert <span class="highlight">was, was</span> absolutely amazing.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/more_examples/word_rep/6649.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>Please <span class="highlight">bring, bring</span> your passport to the meeting.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="audio-container">
+                        <h2>Phone-level Repetition</h2>
+                        <audio controls>
+                            <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/5246%20phn_rep.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p><strong>Clean text:</strong> We should schedule a meeting to discuss the budget allocation.</p>
+                            <p><strong>Dysfluent text:</strong> wiː ʃˌʊd <span class="highlight">skˈɛ...skˈɛ</span>dʒuːl ɐ mˈiːɾɪŋ tə dɪskˈʌs ðə bˈʌdʒɪt ˌæləkˈeɪʃən.</p>
+                            <p><strong>Model output/label:</strong> W IY SH UH D <span class="highlight">S K EH [REP]</span> JH UH L AH M IY T IH NG T UW D IH S K AH S DH AH B AH JH IH T AE L AH K EY SH AH N</p>
+                        </div>
+                        <button class="more-examples-btn">More Examples</button>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="audio-container">
+                        <h2>Phone-level Repetition - More Examples</h2>
+                        <button class="back-btn">←</button>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/more_examples/phn_rep/6461.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>I need to <span class="highlight">c...c</span>omplete this assignment.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/5246%20phn_rep.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>The <span class="highlight">t...t</span>eacher explained the concept clearly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="audio-container">
+                        <h2>Word-level Insertion</h2>
+                        <audio controls>
+                            <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6718%20word_ins.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p><strong>Clean text:</strong> I apologize, but your package has been delayed in transit.</p>
+                            <p><strong>Dysfluent text:</strong> I apologize, but your package has been<span class="highlight"> um,</span> delayed in transit.</p>
+                            <p><strong>Model output/label:</strong> I apologize, but your package has been <span class="highlight">[INS]</span> delayed in transit.</p>
+                        </div>
+                        <button class="more-examples-btn">More Examples</button>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="audio-container">
+                        <h2>Word-level Insertion - More Examples</h2>
+                        <button class="back-btn">←</button>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6718%20word_ins.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>We need to <span class="highlight">like</span> finish this project by Friday.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6718%20word_ins.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>The professor <span class="highlight">um</span> explained the theory in detail.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="audio-container">
+                        <h2>Phone-level Insertion</h2>
+                        <audio controls>
+                            <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/10%20phn_ins.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p><strong>Clean text:</strong> Mom, can you help me with my science project?</p>
+                            <p><strong>Dysfluent text:</strong> mˈɑːm, kæn juː hˈɛlp mˌiː wɪð maɪ sˈaɪ<span class="highlight">t</span>əns pɹˈɑːdʒɛkt?</p>
+                            <p><strong>Model output/label:</strong> M AA M K AE N Y UW HH EH L P M IY W IH DH M AY S AY <span class="highlight">[INS]</span> AH N S P R AA JH EH K T</p>
+                        </div>
+                        <button class="more-examples-btn">More Examples</button>
+                    </div>
+                </div>
+                <div class="flip-card-back">
+                    <div class="audio-container">
+                        <h2>Phone-level Insertion - More Examples</h2>
+                        <button class="back-btn">←</button>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/10%20phn_ins.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>She went to the li<span class="highlight">b</span>rary to study.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="back-example">
+                            <audio controls>
+                                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/10%20phn_ins.wav" type="audio/wav">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <div class="text-info">
+                                <p>The clima<span class="highlight">k</span>te change affects us all.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Replace Word-level and Phone-level Pause section -->
+<div class="container">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Word-level Pause</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/72%20word_pau.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong> The introduction should provide a brief overview of the research question.</p>
+                        <p><strong>Dysfluent text:</strong> The introduction should provide a brief overview of <span class="highlight">[pause]</span> the research question.</p>
+                        <p><strong>Model output/label:</strong> The introduction should provide a brief overview of <span class="highlight">[PAU]</span> the research question.</p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Word-level Pause - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>We will discuss <span class="highlight">[pause]</span> the results in the next meeting.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>She finished <span class="highlight">[pause]</span> her presentation early.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Phone-level Pause</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/34%20phn_pau.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong> The library has been renovating its main reading room since last month.</p>
+                        <p><strong>Dysfluent text:</strong>ðə lˈaɪ<span class="highlight">[pause]</span>bɹɛɹi hɐzbɪn ɹˈɛnəvˌeɪɾɪŋ ɪts mˈeɪn ɹˈiːdɪŋ ɹˈuːm sˈɪns lˈæst mˈʌnθ.</p>
+                        <p><strong>Model output/label:</strong> DH AH L AY <span class="highlight">[PAU]</span> B R EH R IY HH AE Z B IH N R EH N AH V EY T IH NG IH T S M EY N R IY D IH NG R UW M S IH N S L AE S T M AH N TH</p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Phone-level Pause - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>Pre<span class="highlight">[pause]</span>sent your findings to the committee.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>The di<span class="highlight">[pause]</span>rector approved our proposal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <div class="audio-container">
-            <h2>Phone-level Repetition</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/5246%20phn_rep.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> We should schedule a meeting to discuss the budget allocation.</p>
-                <p><strong>Dysfluent text:</strong> wiː ʃˌʊd <span class="highlight">skˈɛ...skˈɛ</span>dʒuːl ɐ mˈiːɾɪŋ tə dɪskˈʌs ðə bˈʌdʒɪt ˌæləkˈeɪʃən.</p>
-                <p><strong>Model output/label:</strong> W IY SH UH D <span class="highlight">S K EH [REP]</span> JH UH L AH M IY T IH NG T UW D IH S K AH S DH AH B AH JH IH T AE L AH K EY SH AH N</p>
+<!-- Replace Word-level and Phone-level Substitution section -->
+<div class="container">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Word-level Substitution</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/766%20word_sub.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong> The patient needs immediate medical <span class="highlight">attention</span>.</p>
+                        <p><strong>Dysfluent text:</strong> The patient needs immediate medical <span class="highlight">retention</span>.</p>
+                        <p><strong>Model output/label:</strong> The patient needs immediate medical<span class="highlight"> attention [SUB]</span>.</p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Word-level Substitution - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>She <span class="highlight">cooked</span> the report last week. (intended: completed)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>The <span class="highlight">road</span> is open until 9 PM. (intended: store)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="audio-container">
-            <h2>Word-level Insertion</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6718%20word_ins.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> I apologize, but your package has been delayed in transit.</p>
-                <p><strong>Dysfluent text:</strong> I apologize, but your package has been<span class="highlight"> um,</span> delayed in transit.</p>
-                <p><strong>Model output/label:</strong> I apologize, but your package has been <span class="highlight">[INS]</span>  delayed in transit.</p>
+    
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Phone-level Substitution</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/1614%20phn_sub.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong> The moon shines brightly in the night sky.</p>
+                        <p><strong>Clean IPA:</strong> ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈ<span class="highlight">aɪ</span>.</p>
+                        <p><strong>Dysfluent text:</strong>ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈ<span class="highlight">eɪ</span>.</p>
+                        <p><strong>Model output/label:</strong> DH AH M UW N SH AY N Z B R AY T L IY IH N DH AH N AY T S K <span class="highlight">AY [SUB]</span></p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
             </div>
-        </div>
-        <div class="audio-container">
-            <h2>Phone-level Insertion</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/10%20phn_ins.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> Mom, can you help me with my science project?</p>
-                <p><strong>Dysfluent text:</strong> mˈɑːm, kæn juː hˈɛlp mˌiː wɪð maɪ sˈaɪ<span class="highlight">t</span>əns pɹˈɑːdʒɛkt?</p>
-                <p><strong>Model output/label:</strong> M AA M K AE N Y UW HH EH L P M IY W IH DH M AY S AY <span class="highlight">[INS]</span> AH N S P R AA JH EH K T</p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="audio-container">
-            <h2>Word-level Pause</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/72%20word_pau.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> The introduction should provide a brief overview of the research question.</p>
-                <p><strong>Dysfluent text:</strong> The introduction should provide a brief overview of <span class="highlight">[pause]</span> the research question.</p>
-                <p><strong>Model output/label:</strong> The introduction should provide a brief overview of  <span class="highlight">[PAU]</span> the research question.</p>
-            </div>
-        </div>
-        <div class="audio-container">
-            <h2>Phone-level Pause</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/34%20phn_pau.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> The library has been renovating its main reading room since last month.</p>
-                <p><strong>Dysfluent text:</strong>ðə lˈaɪ<span class="highlight">[pause]</span>bɹɛɹi hɐzbɪn ɹˈɛnəvˌeɪɾɪŋ ɪts mˈeɪn ɹˈiːdɪŋ ɹˈuːm sˈɪns lˈæst mˈʌnθ.</p>
-                <p><strong>Model output/label:</strong> DH AH L AY <span class="highlight">[PAU]</span> B R EH R IY HH AE Z B IH N R EH N AH V EY T IH NG IH T S M EY N R IY D IH NG R UW M S IH N S L AE S T M AH N TH</p>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Phone-level Substitution - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>They <span class="highlight">bocked</span> the entrance. (intended: blocked)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>The <span class="highlight">snoke</span> filled the room. (intended: smoke)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="audio-container">
-            <h2>Word-level Substitution</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/766%20word_sub.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> The patient needs immediate medical <span class="highlight">attention</span>.</p>
-                <p><strong>Dysfluent text:</strong> The patient needs immediate medical <span class="highlight">retention</span>.</p>
-                <p><strong>Model output/label:</strong> The patient needs immediate medical<span class="highlight"> attention [SUB]</span>.</p>
+</div>
+
+<!-- Replace Word-level and Phone-level Deletion section -->
+<div class="container">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Word-level Deletion</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6860%20word_del.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong>The client wants us to deliver the product by next month.</p>
+                        <p><strong>Dysfluent text:</strong> The client wants<span class="highlight"> us deliver </span>the product by next month.</p>
+                        <p><strong>Model output/label:</strong> The client wants us <span class="highlight">to [DEL] </span>deliver the product by next month.</p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
             </div>
-        </div>
-        <div class="audio-container">
-            <h2>Phone-level Substitution</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/1614%20phn_sub.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> The moon shines brightly in the night sky.</p>
-                <p><strong>Clean IPA:</strong> ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈ<span class="highlight">aɪ</span>.</p>
-                <p><strong>Dysfluent text:</strong>ðə mˈuːn ʃˈaɪnz bɹˈaɪtli ɪnðə nˈaɪt skˈ<span class="highlight">eɪ</span>.</p>
-                <p><strong>Model output/label:</strong> DH AH M UW N SH AY N Z B R AY T L IY IH N DH AH N AY T S K <span class="highlight">AY [SUB]</span></p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="audio-container">
-            <h2>Word-level Deletion</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6860%20word_del.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong>The client wants us to deliver the product by next month.</p>
-                <p><strong>Dysfluent text:</strong> The client wants<span class="highlight"> us deliver </span>the product by next month.</p>
-                <p><strong>Model output/label:</strong> The client wants us <span class="highlight">to [DEL] </span>deliver the product by next month.</p>
-            </div>
-        </div>
-        <div class="audio-container">
-            <h2>Phone-level Deletion</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/32%20phn_del.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> The photographer captured stunning landscapes.</p>
-                <p><strong>Clean IPA:</strong> ðə fətˈɑːɡɹəfɚ kˈæ<span class="highlight">ptʃɚ</span>d stˈʌnɪŋ lˈændskeɪps.</p>
-                <p><strong>Dysfluent text(IPA):</strong>ðə fətˈɑːɡɹəfɚ kˈæ<span class="highlight">pɚ</span>d stˈʌnɪŋ lˈændskeɪps.</p>
-                <p><strong>Model output/label:</strong> DH AH F AH T AA G R AH F ER K AE P<span class="highlight"> CH [DEL] </span> ER D S T AH N IH NG L AE N D S K EY P S</p>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Word-level Deletion - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>She went <span class="highlight">[DEL]</span> the store yesterday. (missing: to)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>I'm going <span class="highlight">[DEL]</span> eat lunch now. (missing: to)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="audio-container">
-            <h2>Phone-level Prolongation</h2>
-            <audio controls>
-                <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6%20phn_pro.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="text-info">
-                <p><strong>Clean text:</strong> They discussed potential investments.</p>
-                <p><strong>Dysfluent text(IPA):</strong>ðeɪ dɪskˈʌst pətˈ<span class="highlight">ɛ [prolong]</span> nʃəl ɪnvˈɛstmənts.</p>
-                <p><strong>Model output/label:</strong> DH EY D IH S K AH S T P AH T<span class="highlight"> EH [PRO]</span> N SH AH L IH N V EH S T M AH N T S</p>
+    
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Phone-level Deletion</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/32%20phn_del.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong> The photographer captured stunning landscapes.</p>
+                        <p><strong>Clean IPA:</strong> ðə fətˈɑːɡɹəfɚ kˈæ<span class="highlight">ptʃɚ</span>d stˈʌnɪŋ lˈændskeɪps.</p>
+                        <p><strong>Dysfluent text(IPA):</strong>ðə fətˈɑːɡɹəfɚ kˈæ<span class="highlight">pɚ</span>d stˈʌnɪŋ lˈændskeɪps.</p>
+                        <p><strong>Model output/label:</strong> DH AH F AH T AA G R AH F ER K AE P<span class="highlight"> CH [DEL] </span> ER D S T AH N IH NG L AE N D S K EY P S</p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Phone-level Deletion - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>The <span class="highlight">constuction</span> site is busy. (missing: r)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>She's a <span class="highlight">pofessional</span> photographer. (missing: r)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Replace Phone-level Prolongation section -->
+<div class="container">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="audio-container">
+                    <h2>Phone-level Prolongation</h2>
+                    <audio controls>
+                        <source src="https://raw.githubusercontent.com/Anonymousmmp/LLM-Dys/gh-pages/demo/6%20phn_pro.wav" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="text-info">
+                        <p><strong>Clean text:</strong> They discussed potential investments.</p>
+                        <p><strong>Dysfluent text(IPA):</strong>ðeɪ dɪskˈʌst pətˈ<span class="highlight">ɛ [prolong]</span> nʃəl ɪnvˈɛstmənts.</p>
+                        <p><strong>Model output/label:</strong> DH EY D IH S K AH S T P AH T<span class="highlight"> EH [PRO]</span> N SH AH L IH N V EH S T M AH N T S</p>
+                    </div>
+                    <button class="more-examples-btn">More Examples</button>
+                </div>
+            </div>
+            <div class="flip-card-back">
+                <div class="audio-container">
+                    <h2>Phone-level Prolongation - More Examples</h2>
+                    <button class="back-btn">←</button>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>The <span class="highlight">s[prolong]</span>tudent completed the assignment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="back-example">
+                        <audio controls>
+                            <source src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="text-info">
+                            <p>They're <span class="highlight">m[prolong]</span>oving to a new office.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        window.onload = function() {
+            // Get all more examples buttons
+            const moreButtons = document.querySelectorAll('.more-examples-btn');
+            // Get all back buttons
+            const backButtons = document.querySelectorAll('.back-btn');
+            
+            // Find all containers (rows)
+            const containers = document.querySelectorAll('.container');
+            
+            // Process each container to make audio containers the same height
+            containers.forEach(container => {
+                // Get all audio containers in this container's front cards
+                const frontAudioContainers = container.querySelectorAll('.flip-card-front .audio-container');
+                
+                if (frontAudioContainers.length > 0) {
+                    function setRowAudioContainerHeights() {
+                        // Reset heights first
+                        frontAudioContainers.forEach(audioContainer => {
+                            audioContainer.style.height = '';
+                        });
+                        
+                        const backAudioContainers = container.querySelectorAll('.flip-card-back .audio-container');
+                        backAudioContainers.forEach(audioContainer => {
+                            audioContainer.style.height = '';
+                        });
+                        
+                        // Wait a moment for layout to stabilize
+                        setTimeout(() => {
+                            // Find the tallest audio container in this row
+                            let maxAudioContainerHeight = 0;
+                            
+                            frontAudioContainers.forEach(audioContainer => {
+                                if (audioContainer.offsetHeight > maxAudioContainerHeight) {
+                                    maxAudioContainerHeight = audioContainer.offsetHeight;
+                                }
+                            });
+                            
+                            // Set all audio containers in this row to the tallest height
+                            frontAudioContainers.forEach(audioContainer => {
+                                audioContainer.style.height = maxAudioContainerHeight + 'px';
+                            });
+                            
+                            backAudioContainers.forEach(audioContainer => {
+                                audioContainer.style.height = maxAudioContainerHeight + 'px';
+                                audioContainer.style.overflowY = 'auto'; // Allow scrolling if content is too large
+                            });
+                        }, 100);
+                    }
+                    
+                    // Set heights initially and on window resize
+                    setRowAudioContainerHeights();
+                    window.addEventListener('resize', setRowAudioContainerHeights);
+                }
+            });
+            
+            // Add click event to more examples buttons
+            moreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.flip-card');
+                    card.classList.add('flipped');
+                });
+            });
+            
+            // Add click event to back buttons
+            backButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.flip-card');
+                    card.classList.remove('flipped');
+                });
+            });
+        };
+    </script>
 </body>
 </html>
