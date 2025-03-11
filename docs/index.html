@@ -132,10 +132,11 @@
                 gap: 30px;
             }
             
-            .audio-container {
-                position: relative;
-                min-width: 100%;
+            .flip-card-back .audio-container {
+                position: relative; /* Ensure proper positioning context */
+                height: 100%;
             }
+    
             
             body {
                 padding: 15px;
@@ -173,6 +174,8 @@
                 top: 0;
                 left: 0;
                 transform: rotateY(180deg);
+                width: 100%;
+                height: 100%;
             }
             
                 .more-examples-btn {
@@ -197,8 +200,8 @@
             
             .back-btn {
                 position: absolute;
-                top: 30px;
-                right: 15px;
+                top: 30px !important; /* Force consistent positioning */
+                right: 15px !important;
                 background-color: var(--accent-color);
                 color: white;
                 border: none;
@@ -211,6 +214,10 @@
                 cursor: pointer;
                 font-weight: bold;
                 transition: background-color 0.3s;
+                z-index: 100; /* Ensure button is always on top */
+            }
+            .audio-container {
+                position: relative;
             }
             
             .back-btn:hover {
@@ -220,7 +227,43 @@
             .back-example {
                 margin-bottom: 25px;
             }
-        </style>
+                    .container:has(.flip-card:only-child) .flip-card {
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            /* Alternative solution if :has selector isn't supported in all browsers */
+            .container.full-width {
+                display: block;
+            }
+            
+            .container.full-width .flip-card {
+                max-width: none;
+                perspective: 2400px; /* Increase perspective for smoother animation */
+            }
+            
+            .container.full-width .flip-card-inner {
+                transform-origin: center; /* Flip from center */
+            }
+            
+            /* Slow down the flip animation slightly */
+            .container.full-width .flip-card-inner {
+                transition: transform 1s;
+            }
+            
+            /* Add a subtle scale effect to make the flip less dramatic */
+            .container.full-width .flip-card.flipped .flip-card-inner {
+                transform: rotateY(180deg) scale(0.98);
+            }
+            
+            /* Ensure content is centered better */
+            .container.full-width .audio-container {
+                max-width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+</style>
 </head>
 <body>
     <header>
@@ -701,8 +744,9 @@
 </div>
 
 <!-- Replace Phone-level Prolongation section -->
+<!-- Replace just this container div for Phone-level Prolongation section -->
 <div class="container">
-    <div class="flip-card">
+    <div class="flip-card" style="flex: 0 0 100%; max-width: 1600px; margin-left: auto; margin-right: auto;">
         <div class="flip-card-inner">
             <div class="flip-card-front">
                 <div class="audio-container">
