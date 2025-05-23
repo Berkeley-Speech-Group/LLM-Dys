@@ -14,18 +14,29 @@ Our system supports multiple types of dysfluency at different linguistic levels:
 
 ### Word-level Dysfluencies
 - **Repetition (REP)**: Repetition of single word or phrase 
+  - *Example*: "The conference will feature keynote speeches <span style="color:red">from, from</span> leading experts in the field."
 - **Insertion (INS)**: Insertion of single word or common phrases 
+  - *Example*: "Don't forget to <span style="color:red">you know,</span> set your clocks forward this weekend."
 - **Deletion (DEL)**: Omission of words from expected speech 
+  - *Example*: "The client wants us <span style="color:red">(to) </span>deliver the product by next month." 
 - **Pause (PAU)**: Extended pauses between words 
+  - *Example*: "The team is working hard to <span style="color:red">&lt;pause&gt;</span> finish the project on time."
 - **Substitution (SUB)**: Replacement of target words 
+  - *Example*: "The patient needs immediate medical <span style="color:red">attention </span>（retention）." 
 
 ### Phoneme-level Dysfluencies
 - **Repetition (REP)**: Repetition of single syllables 
+  - *Example*: "ðeɪ ɑːɹ <span style="color:red">plˈeɪ...plˈeɪ</span>ɪŋ ɪnðə pˈɑːɹk." (They are playing in the park.)
 - **Insertion (INS)**: Insertion of single phoneme 
+  - *Example*: "ɑːɹ juː fɹˈiː ðɪs wˈiːk<span style="color:red">m</span>ɛnd fɚɹə hˈaɪk?" (Are you free this weekend for a hike?)
 - **Deletion (DEL)**: Omission of single phoneme
+  - *Example*: "dˈɑːɹk stˈoːɹm klˈaʊdz ɡˈæðɚd k<span style="color:red">(w)</span>ˈɪkli." (Dark storm clouds gathered quickly.)
 - **Pause (PAU)**: Extended pauses between phonemes within a word
+  - *Example*: "ʃiː ɪz pɹɪ<span style="color:red">&lt;pause&gt;</span>pˈɛɹɪŋ fɚðə pɹˌɛzəntˈeɪʃən təmˈɑːɹoʊ." (She is preparing for the presentation tomorrow.)
 - **Substitution (SUB)**: Replacement of single phoneme 
+  - *Example*: "ˈaɪ wˈɪʃ tə wˈɑːʃ maɪ ˈaɪɹɪʃ ɹˈɪstwɑː<span style="color:red">s</span>(tʃ)." (I wish to wash my Irish wristwatch.)
 - **Prolongation (PRO)**: Extended duration of specific phonemes 
+  - *Example*: "wiː nˈiː<span style="color:red">&lt;prolong&gt;</span>d tʊ ɪmpɹˈuːv pɹədˈʌkʃən ɪfˈɪʃənsi." (We need to improve production efficiency.)
 
 
 ## ✨ Key Features
