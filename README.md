@@ -30,7 +30,7 @@ Our system supports multiple types of dysfluency at different linguistic levels:
 - **Insertion (INS)**: Insertion of single phoneme 
   - *Example*: "ɑːɹ juː fɹˈiː ðɪs wˈiːk**m**ɛnd fɚɹə hˈaɪk?" (Are you free this weekend for a hike?)
 - **Deletion (DEL)**: Omission of single phoneme
-  - *Example*: "dˈɑːɹk stˈoːɹm klˈaʊdz ɡˈæðɚd k**(w)**ˈɪkli." (Dark storm clouds gathered quickly.)
+  - *Example*: "dˈɑːɹk stˈoːɹm klˈaʊdz ɡˈæðɚd k **(w)** ˈɪkli." (Dark storm clouds gathered quickly.)
 - **Pause (PAU)**: Extended pauses between phonemes within a word
   - *Example*: "ʃiː ɪz pɹɪ **&lt;pause&gt;** pˈɛɹɪŋ fɚðə pɹˌɛzəntˈeɪʃən təmˈɑːɹoʊ." (She is preparing for the presentation tomorrow.)
 - **Substitution (SUB)**: Replacement of single phoneme 
