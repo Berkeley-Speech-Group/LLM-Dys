@@ -5,7 +5,7 @@
 
 ## 🔊 Overview
 
-**LLM-Dys** is an innovative project that leverages large language models to help  realistic dysfluent speech synthesis. Experience our technology through our [ demo](https://anonymousmmp.github.io/LLM-Dys/) showcasing various audio examples.
+**LLM-Dys** is an innovative project that leverages large language models to help  realistic dysfluent speech synthesis. Experience our technology through our [ demo](https://Berkeley-Speech-Group.github.io/LLM-Dys/) showcasing various audio examples.
 
 
 ## 🔍 Dysfluency Types
