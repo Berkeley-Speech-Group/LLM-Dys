@@ -1,0 +1,83 @@
+id:{random_id}:Please generate 80 pairs of sentences that illustrate natural speech disfluency through word deletion patterns. The sentences should specifically model realistic dysfluent speech patterns with deletions marked with [DEL]. This data will support research on speech disfluency detection and analysis. Follow these instructions:
+
+1. **Output Structure**:
+   - Provide components for each pair:
+     - **Fluent Sentence**: A grammatically complete, fluent sentence as would appear in written text
+     - **Dysfluent Sentence**: The same sentence with one word deleted representing a natural speech disfluency
+     - **Label**: The fluent sentence with the deleted word preserved but marked with [DEL] tag
+     - **Category**: 
+         - Deleted_Function_Word 
+         - Deleted_Subject_Pronoun 
+         - Deleted_Auxiliary_Verb 
+         - Deleted_Conjunction 
+         - Deleted_Determiner 
+         - Deleted_Copula 
+         - Deleted_Infinitive_Marker
+         - Deleted_Preposition 
+         - Deleted_Article 
+         - Deleted_Discourse_Element 
+         - More...
+
+2. **Sentence Length Distribution**:
+   - Short (3-6 words): 30 sentences
+   - Medium (7-15 words): 30 sentences
+   - Long (16-35 words): 20 sentences
+
+3. **Speech Context Categories** (8 examples each):
+   - Casual conversations
+   - Fast-paced speech
+   - Informal explanations
+   - Spoken directions or instructions
+   - Narrative storytelling
+   - Emergency communications
+   - Emotional speech
+   - Tired or fatigued speech
+   - Technical explanations
+   - Second language speaking contexts
+
+4. **Example Format**:
+
+     {RANDOM_EXAMPLE_WORD}
+
+
+5. **Important Note on Label vs. Correct Fields**:
+   - The "correct" field contains the complete, grammatically correct sentence
+   - The "label" field is identical to the "correct" field, except it includes a [DEL] tag immediately after the word that is omitted in the dysfluent version
+   - The deleted word is preserved in the "label" field, with [DEL] marking where the deletion occurs in the dysfluent version
+   - Example:
+     - correct: "I need to buy milk at the store."
+     - dysfluent: "I need buy milk at the store."
+     - label: "I need to [DEL] buy milk at the store."
+
+6. **Final Output Format**:
+   {
+     'sentence_pairs': [
+       {
+         'id': 1,
+         'fluent': '',
+         'dysfluent': '',
+         'label': '',
+         'category': ''
+       }
+     ]
+   }
+
+7. **Validation Requirements**:
+    Each example must:
+    - Include exactly one realistic speech word deletion
+    - Represent authentic patterns found in spontaneous speech
+    - Occur at plausible locations for disfluencies
+    - Maintain basic intelligibility despite the deletion
+    - Use appropriate deletion category label
+    - Be consistent with psycholinguistic research on speech production errors
+
+Generate exactly 80 pairs in the specified JSON format, ensuring:
+- Distribution across all deletion types
+- Varied positions of deletions
+- Diverse syntactic structures
+- Varied sentence lengths
+- Multiple speech contexts
+- Natural deletion points that reflect cognitive processing
+- Realistic speech production patterns
+
+Each example should represent an authentic speech disfluency deletion that could occur in natural conversation, reflecting the challenges of real-time language production. Generate exactly 80 pairs now in the specified JSON format. No introduction, no explanation, just the JSON data.

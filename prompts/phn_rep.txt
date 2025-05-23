@@ -1,0 +1,90 @@
+Please generate some pairs of phoneme sequences that illustrate natural stuttering patterns with phoneme repetitions. The sequences should be diverse in phonetic contexts and structure to support scaling analysis. Follow these instructions:
+---
+
+### ** Input Format:**
+
+The following fields should be provided in your API request:
+
+- **id**: An identifier for the sample (either integer or string).
+- **reference_text**: The original English text to be used.
+- **cmu_correct**: The CMU phoneme sequence **without stress markers**.
+- **ipa_correct**: The corresponding IPA phoneme sequence.
+
+### Example Input:
+
+
+{
+  "id": 1,
+  "reference_text": "The cat sat on the mat.",
+  "cmu_correct": "DH AH K AE T S AE T AA N DH AH M AE T",
+  "ipa_correct": "ðə kˈæt sˈæt ɔnðə mˈæt."
+}
+
+
+---
+
+### **Output Format:**
+
+- **id**: The same identifier I provided in the input.
+- **cmu_dysfluent**: The CMU phoneme sequence with one **syllable repetitions** (using `[REP]` for repeated syllables).
+- **ipa_dysfluent**: The IPA phoneme sequence with one **syllable repetitions**.(must have'...')
+- **label**: The repeated syllables marked with `[REP]`.(complete sentence)
+- **category**: The phonetic classification (e.g., "Plosive", "Fricative", etc.).
+
+### Example Output:
+## only the json data , no instructions like:'Here are the generated pairs of phoneme sequences illustrating natural stuttering patterns with phoneme repetitions:'
+
+{
+  "id": 1,
+  "cmu_dysfluent": "DH AH K AE K AE T S AE T AA N DH AH M AE T",
+  "ipa_dysfluent": "ðə kˈæ...kˈæt sˈæt ɔnðə mˈæt.",
+  "label": "DH AH K AE [REP] T S AE T AA N DH AH M AE T",
+  "category": "..."
+},
+{
+   ...
+}
+
+
+
+
+---
+
+### **Key Instructions for Stuttering Pattern:**
+
+1. **Syllable Repetitions**: 
+   - **Syllables, not individual phonemes**, should be repeated (e.g., “lˈɑɹ lˈɑɹʤ” instead of “l lɑɹʤ”).
+   - Place **[REP]** after the repeated syllable.
+  
+2. **Phonetic Context**:
+   - Focus on **high-risk consonants** like **plosives**, **fricatives**, and **affricates** for stuttering.
+   - Include a mix of **consonant-initial** and **vowel-initial** words.
+   - Ensure a balance across **content words** and **function words**.
+  
+3. **Natural Stuttering Patterns**:
+   - Most repetitions should occur on **initial syllables**, **stressed syllables**, and **content words**.
+   - Ensure the transcription reflects **natural stuttering prosody**, including rhythm and stress.
+
+4. **Phonetic Environment**:
+   - Maintain contextually accurate stuttering patterns.
+   - Represent **stress patterns** and **rhythm** typical of stuttering in the IPA transcription.
+
+
+
+
+### **Output Distribution:**
+- Phoneme repetitions should reflect real-world stuttering behaviors, prioritizing content words and stressed syllables.
+- High-risk sounds (e.g., **plosives**, **fricatives**, **affricates**) should be favored for repetition patterns.
+- Keep the syllable repetition natural, without overcomplicating with excessive prolongations or blocks.
+
+### **Note**:
+Each pair should include one repetition syllable. you create it self to make it more natural
+
+---
+
+This format aligns the stuttering phenomenon with real-world usage of the CMUdict phoneme set and IPA, while ensuring **natural and balanced stuttering patterns** in the generated output.
+
+Generate 10 pairs corresponding to the following input. All pairs in once ,don't tell like this'[Response truncated due to length. I can continue with the remaining pairs if needed. Each pair follows the same pattern of including natural stuttering repetitions focused on initial syllables and high-risk consonants while maintaining phonetic accuracy and proper labeling.]
+Would you like me to continue with the remaining pairs?', the max_token is enough for your work
+
+### **Actual Input:**

@@ -1,0 +1,68 @@
+id:{random_id}:Please generate 80 pairs of sentences that illustrate natural speech repetition patterns. Focus on different types of word repetitions based on word categories. Follow these instructions:
+
+1. Output Structure:
+   - Provide components for each pair:
+     - Correct Sentence: A grammatically complete sentence
+     - Dysfluent Sentence: The same sentence with word repetition
+     - Label: A sentence marking the repeated word's position using [REP]
+     - Category:
+         - Article_Repetition 
+         - Preposition_Repetition 
+         - Pronoun_Repetition 
+         - Conjunction_Repetition 
+         - Auxiliary_Verb_Repetition 
+         - Content_Word_Repetition 
+         - Subject_Repetition 
+         - Verb_Phrase_Repetition 
+         - More...
+
+2. Required Grammatical Diversity:
+   - Complex sentences with subordinate clauses
+   - Compound sentences with coordinating conjunctions
+   - Conditional sentences (if-then structures)
+   - Questions (both yes/no and wh-questions)
+   - Reported speech
+   - Passive voice constructions
+   - Comparative and superlative structures
+   - Present perfect and past perfect tenses
+   - Future tense with various modal verbs
+   - Sentences with relative clauses
+
+
+3. Sentence Length Distribution:
+   - Short (3-6 words): 20 sentences
+   - Medium (7-12 words): 40 sentences
+   - Long (13-20 words): 20 sentences
+
+4. Context Categories (10 examples each):
+   - Professional workplace discussions
+   - Academic conversations
+   - Family interactions
+   - Social media style communication
+   - Customer service dialogues
+   - Healthcare conversations
+   - Travel situations
+   - Technical discussions
+
+5. Example Format:
+
+   {RANDOM_EXAMPLE_WORD}
+
+6. Validation Requirements:
+   Each example must:
+   - Use only complete word repetitions
+   - Demonstrate natural repetition patterns
+   - Include appropriate word category label
+   - Be plausible in natural conversation
+   - Maintain grammatical integrity of base sentence
+   - Focus on specific word category repetitions
+
+Generate exactly 80 pairs now in the specified JSON format, ensuring:
+- Even distribution of word category repetitions
+- Diverse grammatical structures
+- Varied sentence lengths
+- Multiple contexts and situations
+- Natural repetition patterns
+- Complete word usage only
+
+Each example should represent an authentic repetition pattern that could occur in natural speech, while maintaining structural diversity and context richness. Generate exactly 80 pairs now in the specified JSON format. No introduction, no explanation, just the JSON data.

@@ -1,0 +1,84 @@
+id:{random_id}:Please generate 80 pairs of sentences that illustrate natural speech dysfluency through word insertion patterns. The sentences should specifically model realistic dysfluent speech patterns with insertions marked with [INS]. This data will support research on speech dysfluency detection and analysis. Follow these instructions:
+
+1. **Output Structure**:
+   - Provide components for each pair:
+     - **Fluent Sentence**: A grammatically complete, fluent sentence as would appear in written text
+     - **Dysfluent Sentence**: The same sentence with one word insertion representing a natural speech dysfluency
+     - **Label**: A sentence marking the inserted dysfluency with [INS]
+     - **Category**: 
+         - Inserted_Filler 
+         - Inserted_Repetition 
+         - Inserted_Restart 
+         - Inserted_Discourse_Marker
+         - Inserted_Hedge 
+         - Inserted_Correction_Marker 
+         - Inserted_Pause_Filler 
+         - Inserted_False_Start
+         - Inserted_Interjection 
+         - Inserted_Hesitation_Marker
+         - More...
+
+2. **Required Speech Dysfluency Patterns**:
+   - Fillers during cognitive planning 
+   - Hesitations before complex grammatical structures
+   - False starts and self-corrections
+   - Discourse markers at topic transitions
+   - Filled pauses during information retrieval
+   - Hedges before uncertain information
+   - Interjections representing thought interruptions
+   - Dysfluencies at syntactic boundaries
+   - Hesitations before low-frequency words
+
+3. **Sentence Length Distribution**:
+   - Short (3-6 words): 30 sentences
+   - Medium (7-15 words): 30 sentences
+   - Long (16-35 words): 20 sentences
+
+4. **Speech Context Categories** (8 examples each):
+   - Spontaneous explanations
+   - Unprepared responses to questions
+   - Emotional or high-stress speaking situations
+   - Technical explanations by non-experts
+   - Descriptions of complex processes
+   - Recalling past events
+   - Narrative storytelling
+   - Public speaking scenarios
+   - Conversations requiring cognitive effort
+   - Second language speaking contexts
+
+5. **Example Format**:
+
+   {RANDOM_EXAMPLE_WORD}
+
+6. **Final Output Format**:
+   {
+     'sentence_pairs': [
+       {
+         'id': 1,
+         'correct': '',
+         'dysfluent': '',
+         'label': '',
+         'category': ''
+       }
+     ]
+   }
+
+7. **Validation Requirements**:
+    Each example must:
+    - Include exactly one realistic speech dysfluency insertion
+    - Represent authentic patterns found in spontaneous speech
+    - Occur at plausible locations for dysfluencies
+    - Maintain the underlying communicative intent
+    - Use appropriate dysfluency category label
+    - Be consistent with psycholinguistic research on speech production
+
+Generate exactly 80 pairs in the specified JSON format, ensuring:
+- Varied positions of dysfluencies
+- Diverse syntactic structures
+- Varied sentence lengths
+- Multiple speech contexts
+- Natural dysfluency points that reflect cognitive processing
+- Realistic speech production patterns
+
+Each example should represent an authentic speech dysfluency that could occur in natural conversation, reflecting the challenges of real-time language production. 
+Generate exactly 80 pairs now in the specified JSON format. No introduction, no explanation, just the JSON data.

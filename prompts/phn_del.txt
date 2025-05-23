@@ -1,0 +1,109 @@
+Please generate pairs of sequences that illustrate natural **single phoneme deletion** patterns. The sequences should be diverse in context and structure to support scaling analysis.
+
+### **Input Format:**
+
+The following fields should be provided in your API request:
+
+- **id**: An identifier for the sample (either integer or string)
+- **reference_text**: The original English text to be used
+- **cmu_correct**: The CMU phoneme sequence **without stress markers**
+- **ipa_correct**: The corresponding IPA phoneme sequence
+
+### Example Input:
+
+
+{
+    "id": 1,
+    "reference_text": "The cat sat on the mat.",
+    "cmu_correct": "DH AH K AE T S AE T AA N DH AH M AE T",
+    "ipa_correct": "ðə kˈæt sˈæt ˈɑn ðə mˈæt"
+}
+
+
+### **Output Format:**
+
+Generate JSON objects with the following fields:
+- **id**: The same identifier provided in the input.
+- **dysfluent_word**: The word in which the phoneme deletion occurs.
+- **ipa_correct**: The **correct** IPA sequence of the word before deletion.
+- **cmu_correct**: The **correct** CMU sequence of the word before deletion.
+- **ipa_dysfluent**: The IPA phoneme sequence of the word with the deletion marked by `[DEL]` tag.
+- **cmu_dysfluent**: The CMU phoneme sequence of the word with the deletion marked by `[DEL]` tag.
+- **category**: The phonetic classification of the deleted element (e.g., "Plosive", "Fricative", etc.).
+
+### **CRITICAL REQUIREMENTS:**
+1. Must DELETE an actual phoneme and replace it with a `[DEL]` tag.
+2. The `[DEL]` tag must appear EXACTLY where the phoneme was deleted.
+3. Deletions must occur WITHIN words, not at word boundaries.
+4. The deleted phoneme must be a single phoneme.
+
+### Format Rules:
+1. In CMU format:
+   ``` 
+   CORRECT:   "M IH [DEL] K"  (L deleted from "milk")
+   WRONG:     "M IH K [DEL]"   (no phoneme deleted, just a tag added)
+   ```
+
+2. In IPA format:
+   ``` 
+   CORRECT:   "mˈɪ[DEL]k"     (l deleted from "milk")
+   WRONG:     "mˈɪlk[DEL]"      (no phoneme deleted, just a tag added)
+   WRONG:     "mˈɪk"      (phoneme deleted but no [DEL] tag)
+   ```
+
+### Valid Output Example:
+
+```json
+[
+    {
+        "id": 1,
+        "dysfluent_word": "milk",
+        "ipa_correct": "mˈɪlk",
+        "cmu_correct": "M IH L K",
+        "ipa_dysfluent": "mˈɪ[DEL]k",
+        "cmu_dysfluent": "M IH [DEL] K",
+        "category": "Liquid"
+    }
+]
+```
+
+### Invalid Examples:
+
+```json
+// INVALID - No actual phoneme deleted
+{
+    "cmu_dysfluent": "M IH L K [DEL]"  // Wrong: just added [DEL] tag without deleting a phoneme
+}
+```
+
+### **Key Instructions:**
+
+1. **Deletion Format**:
+   - Replace a phoneme with the [DEL] tag.
+   - Must be within a word.
+
+2. **Phoneme Selection**:
+   - Choose a phoneme that would create a natural deletion pattern.
+   - Must consider phonological rules.
+
+3. **Position Rules**:
+   - Only delete within words.
+   - Never at word boundaries.
+   - Always delete an existing phoneme.
+
+4. **Verification Steps**:
+   - Check that a phoneme is actually deleted.
+   - Verify [DEL] tag appears exactly where the phoneme was.
+   - Confirm deletion is within a word.
+   - Ensure no spaces around deletion tag.
+   - Valid examples should contain one deletion that could naturally occur in speech.
+
+### **Note**:
+Generate the output as pure JSON data without additional instructions or explanations. Each sequence should include exactly one within-word deletion that creates a natural-sounding result.
+
+Generate 10 pairs corresponding to the following input. All pairs at once, don't truncate the response.
+
+### **Actual Input:**
+
+--- 
+

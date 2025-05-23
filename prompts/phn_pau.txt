@@ -1,0 +1,78 @@
+### **Input Format **:
+
+The fields to be included in your API request:
+
+- **id**: An identifier for the sample (either integer or string).
+- **reference_text**: The original English text to be used.
+- **cmu_correct**: The CMU phoneme sequence **without stress markers**.
+- **ipa_correct**: The corresponding IPA phoneme sequence.
+
+### Example Input :
+
+
+{
+  "id": 5034,
+  "reference_text": "The economist predicted a recession in the coming quarter.",
+  "cmu_correct": "DH AH IH K AA N AH M IH S T P R IH D IH K T IH D AH R IH S EH SH AH N IH N DH AH K AH M IH NG K W AO R T ER",
+  "ipa_correct": "ðɪ ɪkˈɑːnəmˌɪst pɹɪdˈɪktᵻd ɐ ɹᵻsˈɛʃən ɪnðə kˈʌmɪŋ kwˈɔːɹɾɚ."
+}
+
+
+### **Output Format **:
+
+For each pair, generate the following fields:
+
+- **id**: The same identifier provided in the input.
+- **ipa_label**: The IPA phoneme sequence where the [PAU] marker is placed within words (not between words).
+  - Example: If there’s a natural pause/block inside the word, insert [PAU] at the pause point.
+  - For example, if a pause occurs inside the word "predicted" at the “t”, the output should be:
+    - Original: "pɹɪdˈɪktᵻd"
+    - With marker: "pɹɪdˈɪk[PAU]tᵻd"
+  
+- **cmu_label**: The CMU phoneme sequence where the [PAU] marker is placed inside words (not between words).
+
+### Example Output :
+
+
+[
+  {
+    "id": 5034,
+    "ipa_label": "ðɪ ɪkˈɑːnəmˌɪst pɹɪdˈɪk[PAU]tᵻd ɐ ɹᵻsˈɛʃən ɪnðə kˈʌmɪŋ kwˈɔːɹɾɚ.",
+    "cmu_label": "DH AH IH K AA N AH M IH S T P R IH D IH [PAU] K T IH D AH R IH S EH SH AH N IH N DH AH K AH M IH NG K W AO R T ER"
+  },
+  {
+   ...
+  }
+]
+
+
+### **Key Instructions for Pause/Block Marker**:
+
+1. **Pause/Block Location**:
+   - The pause/block should only occur **within words**, not between words.
+   - The pause/block marker **[PAU]** must be placed at the phoneme level where a natural pause occurs within a word, but not at the word boundary.
+
+2. **Phonetic Context for Pause/Block**:
+   - **Natural pauses/blocks**: The pause/block should reflect realistic speech behaviors, such as hesitation or interruptions.
+   - **The pause/block should occur in appropriate linguistic contexts** such as after consonants or in places where speech tends to pause naturally.
+
+3. **Phonetic Environment**:
+   - The pause/block should appear inside the word, not at word boundaries.
+   - It should occur at a **natural stopping point** inside the word, such as after a consonant or within syllables.
+
+4. **Accuracy**:
+   - Ensure that the insertion of [PAU] does not affect the overall phonetic accuracy of the transcription.
+
+---
+
+This structure now correctly handles the insertion of pause markers within words, and ensures that pauses do not appear at word boundaries. Would you like to test this with a set of examples or make any further adjustments?
+
+
+### **Note**:  
+
+Each pair should include **one pause** within one word. Create the pause to make it as natural as possible.  
+
+Generate 10 pairs corresponding to the following input. All pairs in once ,don't tell like this'[Response truncated due to length. I can continue with the remaining pairs if needed. Each pair follows the same pattern of including natural stuttering pause focused on initial syllables and high-risk consonants while maintaining phonetic accuracy and proper labeling.]
+Would you like me to continue with the remaining pairs?', the max_token is enough for your work
+
+### **Actual Input:**

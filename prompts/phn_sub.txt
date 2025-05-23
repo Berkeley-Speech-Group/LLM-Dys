@@ -1,0 +1,117 @@
+Please generate pairs of sequences that illustrate natural **single phoneme substitution** patterns. The sequences should be diverse in context and structure to support scaling analysis.
+
+### **Input Format:**
+
+The following fields should be provided in your API request:
+
+- **id**: An identifier for the sample (either integer or string)
+- **reference_text**: The original English text to be used
+- **cmu_correct**: The CMU phoneme sequence **without stress markers**
+- **ipa_correct**: The corresponding IPA phoneme sequence
+
+### Example Input:
+
+
+{
+    "id": 1,
+    "reference_text": "The cat sat on the mat.",
+    "cmu_correct": "DH AH K AE T S AE T AA N DH AH M AE T",
+    "ipa_correct": "ðə kˈæt sˈæt ˈɑn ðə mˈæt"
+}
+
+
+### **Output Format:**
+
+Generate JSON objects with the following fields:
+- **id**: The same identifier provided in the input.
+- **dysfluent_word**: The word in which the phoneme substitution occurs.
+- **ipa_correct**: The **correct** IPA sequence of the word before substitution.
+- **cmu_correct**: The **correct** CMU sequence of the word before substitution.
+- **ipa_dysfluent**: The IPA phoneme sequence of the word with the substituted phoneme + `[SUB]` tag.
+- **cmu_dysfluent**: The CMU phoneme sequence of the word with the substituted phoneme + `[SUB]` tag.
+- **category**: The phonetic classification of the substituted phoneme (e.g., "Plosive", "Fricative", etc.).
+
+### **CRITICAL REQUIREMENTS:**
+1. Must SUBSTITUTE an actual phoneme with a different phoneme followed by a `[SUB]` tag.
+2. The `[SUB]` tag must appear IMMEDIATELY AFTER the substituted phoneme.
+3. Substitutions must occur WITHIN words, not at word boundaries.
+4. The substituted phoneme must be different from the original phoneme.
+
+### Format Rules:
+1. In CMU format:
+   ``` 
+   CORRECT:   "M IH N[SUB] K"  (N substituted for L in "milk")
+   WRONG:     "M IH L K [SUB]"   (no phoneme substituted, just a tag added)
+   ```
+
+2. In IPA format:
+   ``` 
+   CORRECT:   "mˈɪn[SUB]k"     (n substituted for l in "milk")
+   WRONG:     "mˈɪlk[SUB]"      (no phoneme substituted, just a tag added)
+   WRONG:     "mˈɪlk"      (no substitution indicated)
+   ```
+
+### Valid Output Example:
+
+```json
+[
+    {
+        "id": 1,
+        "dysfluent_word": "milk",
+        "ipa_correct": "mˈɪlk",
+        "cmu_correct": "M IH L K",
+        "ipa_dysfluent": "mˈɪn[SUB]k",
+        "cmu_dysfluent": "M IH N[SUB] K",
+        "category": "Nasal"
+    }
+]
+```
+
+### Invalid Examples:
+
+```json
+// INVALID - No actual phoneme substituted
+{
+    "cmu_dysfluent": "M IH L K [SUB]"  // Wrong: just added [SUB] tag without substituting a phoneme
+}
+
+// INVALID - Same phoneme
+{
+    "cmu_dysfluent": "M IH L[SUB] K"  // Wrong: no actual substitution occurred
+}
+```
+
+### **Key Instructions:**
+
+1. **Substitution Format**:
+   - Replace original phoneme with a different phoneme.
+   - Add [SUB] tag immediately after the substituted phoneme.
+   - Must be within a word.
+
+2. **Phoneme Selection**:
+   - Choose a substitute phoneme that is phonologically plausible.
+   - Must be different from the original.
+   - Should follow common substitution patterns (e.g., voicing changes, place of articulation shifts).
+
+3. **Position Rules**:
+   - Only substitute within words.
+   - Never at word boundaries.
+   - Always substitute an existing phoneme.
+
+4. **Verification Steps**:
+   - Check that a phoneme is actually substituted.
+   - Verify [SUB] tag follows immediately after the substituted phoneme.
+   - Confirm substitution is within a word.
+   - Ensure no spaces around substitution tag.
+   - Ensure the substituted phoneme differs from the original.
+   - Valid examples should contain one substitution that follows common phonological patterns.
+
+### **Note**:
+Generate the output as pure JSON data without additional instructions or explanations. Each sequence should include exactly one within-word substitution that creates a natural-sounding result while reflecting common phonological processes.
+
+Generate 10 pairs corresponding to the following input. All pairs at once, don't truncate the response.
+
+### **Actual Input:**
+
+--- 
+

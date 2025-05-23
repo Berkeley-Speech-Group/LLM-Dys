@@ -1,0 +1,113 @@
+id:{random_id}:Please generate 30 pairs of sentences that illustrate speech patterns with phonetically-motivated word substitutions. The sentences should be diverse in vocabulary and structure. Follow these instructions:
+
+1. **Output Structure**:
+   - Provide components for each pair:
+     - **Correct Sentence**: A grammatically complete sentence
+     - **Dysfluent Sentence**: The same sentence with one word replaced by a phonetically similar word
+     - **Label**: Mark the replaced word by appending "[SUB]" directly AFTER it. This sequence should match the Correct Sentence, with only the substition marker added after the removed word.
+     - **Category**: 
+         - Initial_Consonant_Sub (park/bark)
+         - Final_Consonant_Sub (cap/cat)
+         - Vowel_Sub (pat/pet)
+         - Consonant_Cluster_Sub (split/sprit)
+         - Syllable_Structure_Sub (protect/project)
+         - Stress_Pattern_Sub (record/regard)
+         - Rhyme_Pattern_Sub (light/fight)
+         - Length_Preserving_Sub (same syllable count)
+         - More...
+
+2. **Vocabulary Requirements**:
+   - Base sentences should cover:
+     - Scientific terminology
+     - Technical vocabulary
+     - Business terms
+     - Academic language
+     - Daily life vocabulary
+     - Abstract concepts
+   - Substitution pairs must:
+     - Be real English words
+     - Have clear phonetic similarity
+     - Maintain similar syllable structure
+     - Be plausible substitutions
+
+3. **Structural Diversity**:
+   - Complex sentences with subordinate clauses
+   - Compound sentences with coordinating conjunctions
+   - Conditional sentences
+   - Questions (both yes/no and wh-questions)
+   - Reported speech
+   - Passive voice constructions
+   - Comparative and superlative structures
+   - Present perfect and past perfect tenses
+   - Future tense with various modal verbs
+   - Sentences with relative clauses
+
+4. **Sentence Length Distribution**:
+   - Short (3-6 words): 10 sentences
+   - Medium (7-15 words): 15 sentences
+   - Long (16-30 words): 5 sentences
+   - Avoid too short sentences (2-4 words)
+
+5. **Context Categories** (3 examples each):
+   - Professional workplace discussions
+   - Academic conversations
+   - Family interactions
+   - Social media style communication
+   - Customer service dialogues
+   - Healthcare conversations
+   - Travel situations
+   - Technical discussions
+   - Entertainment and leisure
+   - Emergency situations
+
+6. **Phonetic Requirements**:
+   - Clear phonetic similarity between original and substituted words
+   - Varied positions of phonetic differences
+   - Natural pronunciation patterns
+   - Common phonological processes
+   - Realistic sound substitutions
+
+7. **Example Format**:
+
+     {RANDOM_EXAMPLE_WORD}
+     {RANDOM_EXAMPLE_WORD}
+
+  // ... exactly 27 more pairs ...
+     {
+            "id": 30,
+            "correct": "",
+            "dysfluent": "",
+            "label": "",
+            "category"
+    }
+
+8. **Final Output Format**:
+   {
+        'id': ,
+        'correct': '',
+        'dysfluent': '',
+        'label': '',
+        'category': ''
+   }
+
+9. **Validation Requirements**:
+    Each example must:
+    - "Dysfluent" is different from "correct"
+    - Demonstrate clear phonetic similarity
+    - Use real English words only
+    - Show plausible substitution patterns
+    - Maintain grammatical structure
+    - Represent natural speech errors
+    - Follow consistent labeling format
+    - Make sure the 'Dysfluent Sentence' do have a word substitution, and the word can be found in the dictionary.
+Generate exactly 30 pairs now in the specified JSON format, ensuring:
+
+- Diverse grammatical structures
+- Varied sentence lengths
+- Multiple contexts and situations
+- Natural substitution patterns
+- Clear phonetic relationships
+- Minimal repetition of substituted words
+- Make sure the 'Dysfluent Sentence' do have a word substitution, and the word can be found in the dictionary.
+
+Each example should represent a plausible phonetically-motivated substitution that could occur in natural speech, while maintaining structural diversity and context richness. Generate exactly 80 pairs now in the specified JSON format. No introduction, no explanation, just the JSON data.

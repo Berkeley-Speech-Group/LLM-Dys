@@ -1,0 +1,86 @@
+I understand now – you want the "dysfluent" field to actually contain a comma at the pause location. Let me revise the prompt to clearly specify this requirement:
+
+```
+# Speech Pause Data Generation Task
+
+Please generate 80 pairs of sentences that model realistic speech pause patterns. These examples will support research on speech fluency, pausing patterns, and natural language processing.
+
+## Output Structure
+
+For each sentence pair, provide:
+
+- **Correct**: The complete sentence without any pause indication
+- **Dysfluent**: The same sentence but with a comma added at the exact position where the pause occurs
+- **Label**: The correct sentence with a [PAU] marker explicitly indicating where the pause occurs
+- **Start**: The word immediately before the pause occurs
+- **End**: The word immediately after the pause occurs
+- **Category**: The linguistic classification of the pause type
+
+## Pause Categories
+- Pause_Before_Noun
+- Pause_Before_Verb
+- Pause_Before_Adjective
+- Pause_Before_Adverb
+- Pause_Before_Conjunction
+- Pause_Before_Preposition
+- Pause_Before_Pronoun
+- Pause_Before_Article
+- Pause_Before_Clause
+- More...
+
+## Grammatical Diversity Requirements
+
+Include a balanced distribution of:
+- Simple sentences (single independent clauses)
+- Compound sentences (multiple independent clauses)
+- Complex sentences (with subordinate clauses)
+- Compound-complex sentences
+- Conditional sentences
+- Interrogative sentences (both yes/no and wh-questions)
+- Imperative sentences
+- Passive constructions
+- Sentences with relative clauses
+- Varied tenses (present, past, future, perfect)
+
+## Sentence Length Distribution
+- Short (4-6 words): 25 sentences
+- Medium (7-13 words): 35 sentences
+- Long (14-25 words): 20 sentences
+
+## Context Categories (8 examples from each)
+- Professional workplace discussions
+- Academic conversations
+- Family interactions
+- Social media style communication
+- Customer service dialogues
+- Healthcare conversations
+- Travel situations
+- Technical discussions
+- Entertainment and leisure
+- Emergency situations
+
+
+## Example Format
+
+  {RANDOM_EXAMPLE_WORD}
+
+## Important Note:
+- The "correct" field contains the grammatically complete sentence without pause indication
+- The "dysfluent" field is identical to the "correct" field BUT with a comma inserted at the exact position where the pause occurs
+- The "label" field shows the correct sentence with a [PAU] marker inserted at the exact position where the pause occurs (same position as the comma in the dysfluent version)
+- "start" and "end" fields contain the words immediately before and after the pause
+
+## Validation Requirements
+Each example must:
+- Include exactly one realistic speech pause
+- Place the pause at a linguistically plausible location
+- In the "dysfluent" field, represent the pause with a comma at the appropriate location
+- In the "label" field, represent the pause with a [PAU] marker at the same location
+- Maintain the sentence's meaning and intelligibility
+- Reflect authentic patterns found in spontaneous speech
+- Use the appropriate pause category label
+- Correctly identify the words before and after the pause
+
+Generate exactly 80 pairs in the specified JSON format, ensuring balanced distribution across all pause types, grammatical structures, sentence lengths, and context categories. The examples should represent natural speech patterns that could occur in authentic conversation.
+
+Deliver the output as a JSON array with no introduction or explanation.

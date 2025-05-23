@@ -1,0 +1,89 @@
+### **Input Format:**
+
+The following fields should be provided in your API request:
+
+- **id**: An identifier for the sample (either integer or string).
+- **reference_text**: The original English text to be used.
+- **cmu_correct**: The CMU phoneme sequence **without stress markers**.
+- **ipa_correct**: The corresponding IPA phoneme sequence.
+
+### Example Input:
+
+{
+"id": 5034,
+"reference_text": "The economist predicted a recession in the coming quarter.",
+"cmu_correct": "DH AH IH K AA N AH M IH S T P R IH D IH K T IH D AH R IH S EH SH AH N IH N DH AH K AH M IH NG K W AO R T ER",
+"ipa_correct": "ðɪ ɪkˈɑːnəmˌɪst pɹɪdˈɪktᵻd ɐ ɹᵻsˈɛʃən ɪnðə kˈʌmɪŋ kwˈɔːɹɾɚ."
+},
+
+### Output Format:
+
+## only the json data , no instructions like:'Here are the generated pairs of phoneme sequences illustrating natural stuttering patterns with phoneme prolongations:'
+
+Generate JSON objects with the following fields:
+
+- id: The same identifier provided in the input.
+- ipa_label: The IPA phoneme sequence where [PRO] is placed immediately after the prolonged element.
+  Example: If "i" is prolonged in "ɪvˈæljuː":
+  Original: "ɪvˈæljuː"
+  With label: "ɪvˈæ [PRO] lju"
+
+- cmu_label: The CMU phoneme sequence where [PRO] is placed immediately after the prolonged phoneme.
+
+Example: If "IY" is prolonged in "IH V AE L Y IY":
+
+Original: "IH V AE L Y IY"
+With label: "IH V AE L Y IY [PRO]"
+
+### Example Output:
+
+[
+
+{
+"id": 5034,
+"ipa_label": "ðɪ ɪkˈɑːnəmˌɪst pɹɪdˈɪ [PRO] ktᵻd ɐ ɹᵻsˈɛʃən ɪnðə kˈʌmɪŋ kwˈɔːɹɾɚ."
+"cmu_label": "DH AH IH K AA N AH M IH S T P R IH D IH [PRO] K T IH D AH R IH S EH SH AH N IH N DH AH K AH M IH NG K W AO R T ER"
+},
+{
+...
+}
+
+]
+
+### **Key Instructions for Prolongation Pattern:**
+
+1. **Prolongation Location**:
+
+   - Prolongation should occur only on **vowels** in the sequence.
+   - The prolonged element must be marked with `[PRO]`.
+
+2. **Phonetic Context**:
+
+   - Prolonged vowels should appear **naturally**, reflecting common speech patterns.
+   - Include a variety of **long and short vowels**, and ensure diversity across different vowel categories.
+
+3. **Natural Prolongation Patterns**:
+
+   - Ensure the prolongation reflects **natural prosody**, such as stress, rhythm, and speech flow.
+   - Prioritize prolongations in **content words** (e.g., nouns, verbs) over function words.
+
+4. **Phonetic Environment**:
+   - Prolonged vowels must correspond to **real-world articulation behaviors**.
+   - Ensure the transcription accurately reflects the vowel's duration in both **CMU** and **IPA** sequences.
+
+---
+
+### **Output Distribution:**
+
+- Prolongations should reflect **real-world behaviors** of vowel elongation.
+- The focus should be on **common vowel prolongation patterns** in natural speech.
+
+### **Note**:
+
+Each pair should include **one vowel prolongation**. Create the prolongation to make it as natural as possible.  
+Double check if you calculate the phoneme_index correctly.
+
+Generate 10 pairs corresponding to the following input. All pairs in once ,don't tell like this'[Response truncated due to length. I can continue with the remaining pairs if needed. Each pair follows the same pattern of including natural stuttering prolongations focused on initial syllables and high-risk consonants while maintaining phonetic accuracy and proper labeling.]
+Would you like me to continue with the remaining pairs?', the max_token is enough for your work
+
+### **Actual Input:**

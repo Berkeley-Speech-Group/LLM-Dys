@@ -1,0 +1,115 @@
+Please generate pairs of sequences that illustrate natural **single phoneme insertion** patterns. The sequences should be diverse in context and structure to support scaling analysis.
+
+### **Input Format:**
+
+The following fields should be provided in your API request:
+
+- **id**: An identifier for the sample (either integer or string)
+- **reference_text**: The original English text to be used
+- **cmu_correct**: The CMU phoneme sequence **without stress markers**
+- **ipa_correct**: The corresponding IPA phoneme sequence
+
+### Example Input:
+
+
+{
+    "id": 1,
+    "reference_text": "The cat sat on the mat.",
+    "cmu_correct": "DH AH K AE T S AE T AA N DH AH M AE T",
+    "ipa_correct": "ðə kˈæt sˈæt ˈɑn ðə mˈæt"
+}
+
+
+# Phoneme Insertion Pattern Generation
+
+### **Output Format:**
+
+Generate JSON objects with the following fields:
+- **id**: The same identifier provided in the input.
+- **dysfluent_word**: The word in which the phoneme insertion occurs.
+- **ipa_correct**: The **correct** IPA sequence of the word before insertion.
+- **cmu_correct**: The **correct** CMU sequence of the word before insertion.
+- **ipa_dysfluent**: The IPA phoneme sequence of the word with the inserted phoneme + `[INS]` tag.
+- **cmu_dysfluent**: The CMU phoneme sequence of the word with the inserted phoneme + `[INS]` tag.
+- **category**: The phonetic classification of the inserted element (e.g., "Plosive", "Fricative", etc.).
+
+### **CRITICAL REQUIREMENTS:**
+1. Must INSERT an actual phoneme that is different from both its preceding and following phonemes.
+2. The `[INS]` tag must appear IMMEDIATELY AFTER the inserted phoneme.
+3. Insertions must occur WITHIN words, not at word boundaries.
+4. The inserted phoneme should be single and **different from the surrounding phonemes**.
+
+### Format Rules:
+1. In CMU format:
+   ``` 
+   CORRECT:   "M IH P [INS] L K"  (P inserted within "milk")
+   WRONG:     "M IH L K [INS]"   (no phoneme inserted, just a tag)
+   ```
+
+2. In IPA format:
+   ``` 
+   CORRECT:   "mˈɪp[INS]lk"     (p inserted within "milk")
+   WRONG:     "mˈɪlk[INS]"      (no phoneme inserted, just a tag)
+   WRONG:     "mˈɪl[INS]k"      (no phoneme inserted)
+   ```
+
+### Valid/Output Example:
+
+
+[
+    {
+        "id": 1,
+        "dysfluent_word": "milk",
+        "ipa_correct": "mˈɪlk",
+        "cmu_correct": "M IH L K",
+        "ipa_dysfluent": "mˈɪp[INS]lk",
+        "cmu_dysfluent": "M IH P[INS]L K",
+        "category": "Plosive"
+    },
+ 
+]
+```
+
+### Invalid Examples:
+
+// INVALID - No actual phoneme inserted
+
+{
+    "cmu_dysfluent": "M IH L K [INS]"  // Wrong: just added [INS] tag without inserting a phoneme
+}
+
+
+### **Key Instructions:**
+
+1. **Insertion Format**:
+   - First INSERT a new phoneme.
+   - Then add [INS] tag immediately after it.
+   - Must be within a word.
+
+2. **Phoneme Selection**:
+   - Choose a phoneme different from neighbors.
+   - Must be compatible with word structure.
+
+3. **Position Rules**:
+   - Only insert within words.
+   - Never at word boundaries.
+   - Never at the end of words.
+   - Always between existing phonemes.
+
+4. **Verification Steps**:
+   - Check that a new phoneme is actually inserted.
+   - Verify [INS] tag follows immediately.
+   - Confirm insertion is within a word.
+   - Ensure no spaces around insertion.
+   - Ensure the inserted phoneme is distinct from both its preceding and following phonemes.
+   - Valid examples should contain one insertion that is naturally integrated within the word, adhering to these rules.
+
+### **Note**:
+Generate the output as pure JSON data without additional instructions or explanations. Each sequence should include exactly one within-word insertion that creates a natural-sounding result while strictly adhering to the non-repetition requirement.
+
+Generate 10 pairs corresponding to the following input. All pairs in once, don't tell like this '[Response truncated due to length.]' the max_token is enough for your work.
+
+### **Actual Input:**
+
+--- 
+
