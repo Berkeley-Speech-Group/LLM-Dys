@@ -22,7 +22,7 @@ Our system supports multiple types of dysfluency at different linguistic levels:
 - **Pause (PAU)**: Extended pauses between words 
   - *Example*: "The team is working hard to **&lt;pause&gt;** finish the project on time."
 - **Substitution (SUB)**: Replacement of target words 
-  - *Example*: "The patient needs immediate medical **attention(retention)**." 
+  - *Example*: "The patient needs immediate medical retention **(attention)**." 
 
 ### Phoneme-level Dysfluencies
 - **Repetition (REP)**: Repetition of single syllables 
