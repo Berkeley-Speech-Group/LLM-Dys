@@ -124,7 +124,7 @@ To use our pretrained transcriber models:
 
 1. **Download the pretrained models**
    - Download from [Google Drive](https://drive.google.com/drive/folders/1feIZcFZeKPQKwQ6_7d6ddyBFGM4mOE3h?usp=sharing)
-   - Place the models in `dysfluency_transcriber/pretrained_model/` folder
+   - Place the models in `dysfluency_transcriber/finetuned_model/` folder
 
 2. **Run inference**
    ```bash
