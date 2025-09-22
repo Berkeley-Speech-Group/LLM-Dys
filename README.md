@@ -59,7 +59,6 @@ Our comprehensive dataset enables advanced research in speech synthesis:
 
 - **Sample Dataset**: [Google Drive](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing) (4000 samples of each type)
 - **Full Dataset Size**: ~5TB （12790 hours)
-- **Pretrained Models**: [Google Drive](https://drive.google.com/drive/folders/1feIZcFZeKPQKwQ6_7d6ddyBFGM4mOE3h?usp=sharing) (Download pretrained phoneme level models)
 
 ### 🚀 Accessing the Complete Dataset
 
@@ -118,6 +117,19 @@ python run_phn_pro.py
 ```
 
 # 🔄 Dysfluency Transcriber
+
+### Inference with Pretrained Models
+
+To use our pretrained transcriber models:
+
+1. **Download the pretrained models**
+   - Download from [Google Drive](https://drive.google.com/drive/folders/1feIZcFZeKPQKwQ6_7d6ddyBFGM4mOE3h?usp=sharing)
+   - Place the models in `dysfluency_transcriber/pretrained_model/` folder
+
+2. **Run inference**
+   ```bash
+   # Open and run the inference notebook (inference.ipynb)
+   ```
 
 ### Training the Transcriber Model
 
