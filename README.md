@@ -2,7 +2,7 @@
 
 # LLM-Dys
 
-[![Demo](https://img.shields.io/badge/Demo-Listen_Online-blue)](https://Berkeley-Speech-Group.github.io/LLM-Dys/)  [![Dataset](https://img.shields.io/badge/Dataset-Google_Drive-orange)](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing)  [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2505.22029)
+[![Demo](https://img.shields.io/badge/Demo-Listen_Online-blue)](https://Berkeley-Speech-Group.github.io/LLM-Dys/)  [![Dataset](https://img.shields.io/badge/Dataset-Google_Drive-orange)](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing)  [![HuggingFace](https://img.shields.io/badge/🤗_Hugging_Face-Dataset-yellow)](https://huggingface.co/datasets/tong0/LLM_Dys)  [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2505.22029)
 
 
 
@@ -59,6 +59,7 @@ Our comprehensive dataset enables advanced research in speech synthesis:
 
 - **Sample Dataset**: [Google Drive](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing) (4000 samples of each type)
 - **Full Dataset Size**: ~5TB （12790 hours)
+- **Pretrained Models**: [Google Drive](https://drive.google.com/drive/folders/1feIZcFZeKPQKwQ6_7d6ddyBFGM4mOE3h?usp=sharing) (Download pretrained phoneme level models)
 
 ### 🚀 Accessing the Complete Dataset
 
