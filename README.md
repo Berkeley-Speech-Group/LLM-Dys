@@ -1,19 +1,15 @@
 # LLM-Dys
 
-# LLM-Dys
-
 [![Demo](https://img.shields.io/badge/Demo-Listen_Online-blue)](https://Berkeley-Speech-Group.github.io/LLM-Dys/)  [![Dataset](https://img.shields.io/badge/Dataset-Google_Drive-orange)](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing)  [![HuggingFace](https://img.shields.io/badge/🤗_Hugging_Face-Dataset-yellow)](https://huggingface.co/datasets/tong0/LLM_Dys)  [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2505.22029)
 
+## Overview
+
+LLM-Dys uses large language models for realistic dysfluent speech synthesis. Check out the [demo](https://Berkeley-Speech-Group.github.io/LLM-Dys/) to hear some examples.
 
 
-## 🔊 Overview
+## Dysfluency Types
 
-**LLM-Dys** is an innovative project that leverages large language models to help  realistic dysfluent speech synthesis. Experience our technology through our [ demo](https://Berkeley-Speech-Group.github.io/LLM-Dys/) showcasing various audio examples.
-
-
-## 🔍 Dysfluency Types
-
-Our system supports multiple types of dysfluency at different linguistic levels:
+We support dysfluencies at both word and phoneme levels:
 
 ### Word-level Dysfluencies
 - **Repetition (REP)**: Repetition of single word or phrase 
@@ -42,27 +38,24 @@ Our system supports multiple types of dysfluency at different linguistic levels:
   - *Example*: "wiː nˈiː **&lt;prolong&gt;** d tʊ ɪmpɹˈuːv pɹədˈʌkʃən ɪfˈɪʃənsi." (We need to improve production efficiency.)
 
 
-## ✨ Key Features
+## Features
 
-- **Natural and authentic dysfluency patterns** leveraging advanced LLM technology
-- **Comprehensive support for all dysfluency types** at both word and phoneme levels
-- **Extensive dataset** with over 10,000 hours of data that can be easily scaled
-- **High-quality speech synthesis** with excellent performance in evaluation metrics
-- **Multiple speaker capability** through VCTK dataset integration
-
+- Natural dysfluency patterns using LLMs
+- Word and phoneme level dysfluencies (REP, INS, DEL, PAU, SUB, PRO)
+- Large-scale dataset (~12,790 hours)
+- Multiple speaker support via VCTK dataset
 
 
 
-## 📊 Dataset
 
-Our comprehensive dataset enables advanced research in speech synthesis:
+## Dataset
 
-- **Sample Dataset**: [Google Drive](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing) (4000 samples of each type)
-- **Full Dataset Size**: ~5TB （12790 hours)
+- **Sample Data**: [Google Drive](https://drive.google.com/drive/folders/14LlchEh2PJqhpewztIDh-9hUFF2AAkYr?usp=sharing) (4000 samples per type)
+- **Full Dataset**: ~5TB (12,790 hours)
 
-### 🚀 Accessing the Complete Dataset
+### Generating the Complete Dataset
 
-Due to the large size (~5TB), only sample data is directly provided. To generate the complete dataset:
+The full dataset is too large to distribute directly. Generate it yourself:
 
 1. **Clone the repository**
    ```bash
@@ -78,11 +71,11 @@ Due to the large size (~5TB), only sample data is directly provided. To generate
 
 3. **Configure VITS**
    
-   Follow other configuration steps from [VITS](https://github.com/jaywalnut310/vits)
+   Follow the setup instructions from [VITS](https://github.com/jaywalnut310/vits)
 
-   > **Note**: The VCTK dataset is used to generate multiple speaker variations.
+   > Note: We use the VCTK dataset for multi-speaker generation.
 
-## 🛠️ Data Generation Guide
+## Data Generation
 
 ### Word-level Synthesis
 
@@ -116,54 +109,38 @@ python batch_pau_add.py # Refers to example usage commands in batch_pau_add.py
 python run_phn_pro.py
 ```
 
-# 🔄 Dysfluency Transcriber
+## Dysfluency Transcriber
 
-### Inference with Pretrained Models
+### Inference
 
-To use our pretrained transcriber models:
+1. Download pretrained models from [Google Drive](https://drive.google.com/drive/folders/1feIZcFZeKPQKwQ6_7d6ddyBFGM4mOE3h?usp=sharing)
+2. Put them in `dysfluency_transcriber/finetuned_model/`
+3. Run `inference.ipynb`
 
-1. **Download the pretrained models**
-   - Download from [Google Drive](https://drive.google.com/drive/folders/1feIZcFZeKPQKwQ6_7d6ddyBFGM4mOE3h?usp=sharing)
-   - Place the models in `dysfluency_transcriber/finetuned_model/` folder
-
-2. **Run inference**
-   ```bash
-   # Open and run the inference notebook (inference.ipynb)
-   ```
-
-### Training the Transcriber Model
+### Training
 
 ```bash
-# Navigate to the transcriber directory
 cd dysfluency_transcriber
-
-# Install dependencies
 pip install -r environment.yml
 
-# Prepare your training and validation datasets
-# Then train the model using either the phoneme or word level script
-python train_word_level.py  # For word-level transcription
-# OR
-python train_phn_level.py   # For phoneme-level transcription
+# Train on your own data
+python train_word_level.py  # word-level
+# or
+python train_phn_level.py   # phoneme-level
 ```
-<!-- ## 📝 Citation
 
-If you use this dataset in your research, please cite:
+## Citation
 
-```
-@misc{LLM-Dys,
-  author = {Anonymous Authors},
-  title = {LLM-Dys: Dysfluent Speech Synthesis Using Large Language Models},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/Anonymousmmp/LLM-Dys}
+If you use this work, please cite:
+
+```bibtex
+@inproceedings{zhang25u_interspeech,
+  title     = {{Analysis and Evaluation of Synthetic Data Generation in Speech Dysfluency Detection}},
+  author    = {Jinming Zhang and Xuanru Zhou and Jiachen Lian and Shuhe Li and William Li and Zoe Ezzes and Rian Bogley and Lisa Wauters and Zachary Miller and Jet Vonk and Brittany Morin and Maria Gorno-Tempini and Gopala Anumanchipalli},
+  year      = {2025},
+  booktitle = {{Interspeech 2025}},
+  pages     = {1853--1857},
+  doi       = {10.21437/Interspeech.2025-2658},
+  issn      = {2958-1796},
 }
 ```
-
-## 📄 License
-
-This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## 📬 Contact
-
-For questions or support, please [open an issue](https://github.com/Anonymousmmp/LLM-Dys/issues) on our GitHub repository. -->
